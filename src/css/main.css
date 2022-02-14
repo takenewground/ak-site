@@ -1,0 +1,491 @@
+@import url("../font/Saol Display/font-face.css");
+/* @import url("../font/Nexa Text/font-face.css"); */
+@import url("../font/Aktiv Grotesk/font-face.css");
+
+
+
+
+
+
+
+body {
+	margin: 0;
+
+}
+
+.demo-2 {
+	--color-bg: #d8d8e1;
+	--color-link: #fbae4e;
+	--color-bg-shift: #2b2b3c;
+}
+
+.demo-3 {
+	--color-bg: #e1d8dc;
+	--color-link: #4efbf3;
+	--color-bg-shift: #2e2125;
+}
+
+.invert {
+	-webkit-filter: invert(1);
+	filter: invert(1);
+}
+
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: #000;
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5, 0.5, 1);
+	}
+}
+
+a {
+	outline: none;
+}
+/* a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1.0em;
+    height: 0.16em;
+    background: hsl(0deg 0% 0%);
+    margin-top: 1.5em;
+    margin-left: -0.066666em;
+} */
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+main {
+	position: relative;
+	z-index: 100;
+}
+
+
+.shift {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	pointer-events: none;
+}
+
+.shift--rotated {
+	height: 120vh;
+	top: -10vh;
+}
+
+.shift--horizontal {
+	grid-auto-rows: 1fr;
+	grid-auto-flow: row;
+}
+
+.shift--vertical {
+	grid-auto-columns: 1fr;
+	grid-auto-flow: column;
+}
+
+.shift__layer {
+	position: relative;
+	overflow: hidden;
+	margin-top: -0.5px;
+}
+
+.shift--rotated .shift__layer {
+    transform: rotate(4deg) scale(1.1);
+    width: 120%;
+    left: -10%;
+}
+
+.shift__layer-inner {
+	height: 100%;
+	background: var(--color-bg-shift);
+	transform: translate3d(0, 101%, 0);
+}
+
+.shift--vertical .shift__layer-inner {
+	transform: translate3d(101%, 0, 0);
+}
+
+
+
+
+
+.demos {
+	width: 100%;
+}
+
+.current {
+	color: var(--color-text);
+}
+
+.title-sub {
+	/* font-size: 4vw;
+	font-size: clamp(1rem, 4vw, 1.35rem);
+	font-weight: 300;
+	margin: 0.5rem 0 0 0;
+	line-height: 1; */
+
+
+}
+
+
+
+
+.lines {
+	stroke-width: 4px;
+}
+
+
+.present__visual {
+	grid-area: present-visual;
+	border-radius: 20vw;
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 105vh;
+	width: 70%;
+	max-width: 70vh;
+	align-self: center;
+	justify-self: center;
+	position: relative;
+}
+
+.projects {
+	position: relative;
+	visibility: ;
+	display: grid;
+	grid-template-columns: 35% 15% 1fr;
+	grid-template-areas: '... ... project-latest'
+		'project-img-left ... project-title'
+		'project-img-left project-img-right project-img-right'
+		'project-more project-more project-more';
+}
+
+.project__latest {
+	grid-area: project-latest;
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: center;
+	position: relative;
+	padding-bottom: 20vh;
+	margin-left: 5vw;
+	width: 20vw;
+	z-index: 0;
+}
+
+.project__latest::after {
+	content: '';
+	position: absolute;
+	width: 44vw;
+	height: 44vw;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	left: 50%;
+	top: -25%;
+	margin-left: -22vw;
+}
+
+.projects__img {
+	position: relative;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+.projects__title {
+	grid-area: project-title;
+	text-align: right;
+	padding-right: var(--page-padding);
+	font-family: ivypresto-display, serif;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+
+.projects__title-main {
+	font-size: 10vw;
+	font-size: clamp(2rem, 10vw, 9rem);
+	display: block;
+	line-height: 0.9;
+}
+
+.projects__title-sub {
+	font-size: 4vw;
+	font-size: clamp(1.5rem, 4vw, 3rem);
+	font-style: italic;
+	line-height: 1;
+	margin-right: 0.5vw;
+}
+
+.projects__img--left {
+	grid-area: project-img-left;
+	grid-column-end: 3;
+	border-radius: 0 30vh 30vh 0;
+	height: 60vh;
+}
+
+.projects__img--right {
+	grid-area: project-img-right;
+	border-radius: 40vh 0 0 40vh;
+	height: 80vh;
+}
+
+.projects__more {
+	grid-area: project-more;
+	justify-self: center;
+	text-decoration: underline;
+	font-size: 1.5rem;
+	font-size: clamp(1rem, 3vw, 1.5rem);
+	margin: 15vh 0 35vh;
+	font-weight: 300;
+}
+
+.type {
+	padding: 30vh var(--page-padding);
+	counter-reset: type-link;
+}
+
+.type__link {
+	font-size: 5vw;
+	font-size: clamp(2rem, 5vw, 6rem);
+	font-weight: 300;
+	color: #fff;
+	margin: 0 1rem 0 0;
+	position: relative;
+	white-space: nowrap;
+	display: block;
+}
+
+.type__link:hover,
+.type__link:focus {
+	color: #fff;
+}
+
+.type__link:nth-child(even) {
+	font-family: ivypresto-display, serif;
+	font-style: italic;
+}
+
+.type__link::before {
+	counter-increment: type-link;
+	content: counter(type-link);
+	font-family: brother-1816, sans-serif;
+	font-size: 1.15rem;
+	font-style: normal;
+	display: inline-block;
+	margin-right: 0.5rem;
+	vertical-align: 110%;
+}
+
+.footer {
+	min-height: 400px;
+	padding: 0 var(--page-padding);
+}
+
+.footer__links {
+	grid-area: footer-list;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 1.25rem;
+	font-weight: 300;
+}
+
+.footer__links a {
+	filter: invert(1);
+}
+
+.footer__links a:hover,
+.footer__links a:focus {
+	filter: none;
+}
+
+.footer__img {
+	grid-area: footer-img;
+	max-width: 300px;
+	max-height: 400px;
+	height: 80vh;
+	width: 40vh;
+	background-size: cover;
+	background-position: 50% 50%;
+	align-self: end;
+	justify-self: center;
+	border-radius: 20vh 20vh 0 0;
+}
+
+.footer__author {
+	grid-area: footer-author;
+	margin: 0;
+	align-self: end;
+	padding: 1rem 0;
+	font-family: ivypresto-display, serif;
+	font-weight: 400;
+	font-size: 5vw;
+	font-size: clamp(2rem, 4vw, 5rem);
+}
+
+.footer__year {
+	grid-area: footer-year;
+	align-self: end;
+	padding-bottom: 1rem;
+	font-size: 1.25rem;
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-weight: 300;
+}
+
+/* canvas {display:none;} */
+
+
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+html.has-scroll-dragging {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.has-scroll-smooth body {
+	overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+	min-height: 100vh;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+	height: 100vh;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+	display: inline-block;
+	vertical-align: top;
+	white-space: nowrap;
+	height: 100%;
+}
+
+.c-scrollbar {
+	z-index:999;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 11px;
+	height: 100%;
+	transform-origin: center right;
+	transition: transform 0.3s, opacity 0.3s;
+	opacity: 0;
+}
+
+.c-scrollbar:hover {
+	transform: scaleX(1.45);
+}
+
+.c-scrollbar:hover,
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar {
+	opacity: 1;
+}
+
+[data-scroll-direction="horizontal"] .c-scrollbar {
+	width: 100%;
+	height: 10px;
+	top: auto;
+	bottom: 0;
+	transform: scaleY(1);
+}
+
+[data-scroll-direction="horizontal"] .c-scrollbar:hover {
+	transform: scaleY(1.3);
+}
+
+.c-scrollbar_thumb {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: white;
+	opacity: 0.5;
+	width: 7px;
+	border-radius: 10px;
+	margin: 2px;
+	cursor: -webkit-grab;
+	cursor: grab;
+}
+
+.has-scroll-dragging .c-scrollbar_thumb {
+	cursor: -webkit-grabbing;
+	cursor: grabbing;
+}
+
+[data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+	right: auto;
+	bottom: 0;
+}
