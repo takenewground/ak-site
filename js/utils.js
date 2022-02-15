@@ -1,10 +1,46 @@
 
+// // Progressive loading images
+// const imagesToLoad = document.querySelectorAll('img[data-src]');
+// const loadImages = (image) => {
+//   image.setAttribute('src', image.getAttribute('data-src'));
+//   image.onload = () => {
+//     image.removeAttribute('data-src');
+//   };
+// };
+// if ('IntersectionObserver' in window) {
+//   const observer = new IntersectionObserver((items) => {
+//     items.forEach((item) => {
+//       if (item.isIntersecting) {
+//         loadImages(item.target);
+//         observer.unobserve(item.target);
+//       }
+//     });
+//   });
+//   imagesToLoad.forEach((img) => {
+//     observer.observe(img);
+//   });
+// } else {
+//   imagesToLoad.forEach((img) => {
+//     loadImages(img);
+//   });
+// }
 
-// Clamps a value between an upper and lower bound
-const clamp = (num, min, max) => num <= min ? min : num >= max ? max : num;
 
-// Map number x from range [a, b] to [c, d]
-const map = (x, a, b, c, d) => clamp((x - a) * (d - c) / (b - a) + c, Math.min(c,d), Math.max(c,d));
+
+// // Setting up random Notification
+// function randomNotification() {
+//     const randomItem = Math.floor(Math.random() * games.length);
+//     const notifTitle = games[randomItem].name;
+//     const notifBody = `Created by ${games[randomItem].author}.`;
+//     const notifImg = `data/img/${games[randomItem].slug}.jpg`;
+//     const options = {
+//       body: notifBody,
+//       icon: notifImg,
+//     };
+//     new Notification(notifTitle, options);
+//     setTimeout(randomNotification, 30000);
+//   }
+
 
 // Viewport size
 const calcWinsize = () => {

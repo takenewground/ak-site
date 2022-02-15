@@ -1,7 +1,38 @@
 
-console.log("1111")
-const _canihaz = new Map();
+// Registering Service Worker
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/js/sw.js');
+}
 
+import {map_range, spring_system_create} from "./spring/index.js"
+import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
+
+
+const is_mobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
+if (is_mobile) {
+    window.PleaseRotateOptions = {
+        startOnPageLoad: true,
+        forcePortrait: false,
+        message: "CHANGE YOUR PERSPECTIVE",
+        subMessage: [
+            "Thats what you pay me for",
+            "or don't, but then how is that working out for you",
+            "Most people fail this test",
+        ][Math.round(Math.random()*2)],
+        allowClickBypass: false,
+        onlyMobile: true,
+        onHide: on_ready,
+        // onShow: on_ready,
+    };
+    import("./pleaserotate.js")
+}
+else
+    on_ready()
+
+function on_ready() {
+    // console.log("on_ready")
+// const _canihaz = new Map();
 // function canihaz(key) { return _canihaz.get(key)}
 // // window.canihaz = canihaz
 // function canihaz_init() {
@@ -71,29 +102,28 @@ let inob = new IntersectionObserver(
         threshold: threshold_steps(50)
     }
 );
-let sections = document.querySelectorAll('main>section');
-// for (let section of sections) {
-//     inob.observe(section)
-//     break
+// let sections = document.querySelectorAll('main>section');
+// // for (let section of sections) {
+// //     inob.observe(section)
+// //     break
+// // }
+
+// class Section {
+
 // }
+// class SectionRig {
+//     constructor() {
+//         this.sections = [];
+//     }
 
-class Section {
-
-}
-class SectionRig {
-    constructor() {
-        this.sections = [];
-    }
-
-}
+// }
 
 const section_style = document.createElement('style');
 document.body.appendChild(section_style)
 
 const section_intro = document.querySelector('section.intro');
 
-import {map_range, spring_system_create} from "./spring/index.js"
-import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
+
 
 let scroll_y = 0;
 
@@ -368,9 +398,7 @@ function init() {
 
 
 function ready() {
-    console.log(document.body.classList)
     document.body.classList.remove('loading');
-    console.log(document.body.classList)
 }
 
 init();
@@ -409,26 +437,26 @@ const map = (x, a, b, c, d) => clamp((x - a) * (d - c) / (b - a) + c, Math.min(c
 // };
 
 
-const MAX_SCROLL_DISTANCE = 400;
-const LAYER_BOUNDS = {min: 0, max: 101}; // percentage values
-const shiftEl = document.querySelector('.shift');
-let shiftDirection = 'h';
-if ( shiftEl.classList.contains('shift--vertical') ) {
-    shiftDirection = 'v';
-}
-else if ( shiftEl.classList.contains('shift--rotated') ) {
-    shiftDirection = 'r';
-}
-const layers = [...shiftEl.querySelectorAll('.shift__layer-inner')];
-const triggerEl = document.querySelector('#trigger');
+// const MAX_SCROLL_DISTANCE = 400;
+// const LAYER_BOUNDS = {min: 0, max: 101}; // percentage values
+// const shiftEl = document.querySelector('.shift');
+// let shiftDirection = 'h';
+// if ( shiftEl.classList.contains('shift--vertical') ) {
+//     shiftDirection = 'v';
+// }
+// else if ( shiftEl.classList.contains('shift--rotated') ) {
+//     shiftDirection = 'r';
+// }
+// const layers = [...shiftEl.querySelectorAll('.shift__layer-inner')];
+// const triggerEl = document.querySelector('#trigger');
 
-let currentScroll = 0;
+// let currentScroll = 0;
 
-let triggerTop;
-let cache = {};
-let layersTranslation = {x: 0, y: 0};
+// let triggerTop;
+// let cache = {};
+// let layersTranslation = {x: 0, y: 0};
 
-const calcTriggerTop = () => triggerEl.getBoundingClientRect()['top']+currentScroll;
+// const calcTriggerTop = () => triggerEl.getBoundingClientRect()['top']+currentScroll;
 
 // import LocomotiveScroll from 'locomotive-scroll';
 
@@ -458,4 +486,7 @@ const calcTriggerTop = () => triggerEl.getBoundingClientRect()['top']+currentScr
     // });
 
 // });
+
+
+}
 

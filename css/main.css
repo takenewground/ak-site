@@ -2,7 +2,7 @@
 /* @import url("../font/Nexa Text/font-face.css"); */
 @import url("../font/Aktiv Grotesk/font-face.css");
 
-
+#pleaserotate-backdrop{background-color:var(--main-bg);}
 
 
 
@@ -36,7 +36,7 @@ body {
 .js .loading::after {
 	content: '';
 	position: fixed;
-	z-index: 1000;
+	z-index: 900;
 }
 .js .loading::before {
 	top: 0;
