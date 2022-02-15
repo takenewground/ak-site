@@ -1,7 +1,7 @@
 
 // Registering Service Worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+    navigator.serviceWorker.register('./sw.js');
 }
 
 import {map_range, spring_system_create} from "./spring/index.js"
