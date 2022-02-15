@@ -2,7 +2,7 @@
     "name": "Adrian Koehler",
     "short_name": "Adrian Koehler",
     "description": "no bullshit COACH for the RELENTLESS",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display_override": [""],
     "display":      "standalone",
     "orientation":  "landscape",
