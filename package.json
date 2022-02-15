@@ -1,5 +1,5 @@
 {
-  "name": "backgroundshift",
+  "name": "ak-site",
   "version": "1.0.0",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "description": "",
@@ -9,15 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/codrops/[NAME].git"
+    "url": "git://github.com/takenewground/ak-site.git"
   },
   "keywords": [],
-  "author": "Codrops",
-  "license": "MIT",
-  "homepage": "https://tympanus.net/codrops",
-  "bugs": {
-    "url": "https://github.com/codrops/[NAME]/issues"
-  },
+  "author": "d4",
   "dependencies": {
 
   }
