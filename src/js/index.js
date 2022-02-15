@@ -121,7 +121,7 @@ let inob = new IntersectionObserver(
 const section_style = document.createElement('style');
 document.body.appendChild(section_style)
 
-const section_intro = document.querySelector('section.intro');
+// const section_intro = document.querySelector('section.intro');
 
 
 
@@ -152,10 +152,25 @@ scrollrig.jack('main', document.querySelector('main'), {
 
 let mx = 0|0;
 let my = 0|0;
+const mtgt_rect = new Uint32Array(4);
+let mtgt_has = false;
 function listen_mouse() {
     document.addEventListener('mousemove',function(e){
         mx = e.clientX;
         my = e.clientY;
+        const tag = e.target.tagName.toLowerCase();
+        if (tag === 'a') {
+            const pad = vw >> 5;
+            mtgt_has = true;
+            let {x,y,width,height} = e.target.getBoundingClientRect()
+            mtgt_rect[0] = x - pad;
+            mtgt_rect[1] = y - pad;
+            mtgt_rect[2] = width + (pad<<1);
+            mtgt_rect[3] = height+ (pad<<1);
+        }
+        else {
+            mtgt_has = false;
+        }
     },{passive:true});
 }
 let vw = 0|0;
@@ -170,13 +185,24 @@ function listen_viewport() {
 }
 
 
+function roundedRect(ctx, x, y, width, height, radius) {
+    ctx.beginPath();
+    ctx.moveTo(x, y + radius);
+    ctx.arcTo(x, y + height, x + radius, y + height, radius);
+    ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+    ctx.arcTo(x + width, y, x + width - radius, y, radius);
+    ctx.arcTo(x, y, x, y + radius, radius);
+    // ctx.stroke();
+}
 
 (function(){
     let canvas;
     let ctx
     let dat = new Map();
     let clear_color = 'rgba(0, 0, 0, 0.4)';
-    var ball = {
+    var pill = {
+        w: 500,
+        h: 500,
         x: 100,
         y: 100,
         vx: 5,
@@ -187,7 +213,10 @@ function listen_viewport() {
         fill: 'white',//'black',
         draw: function() {
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+          const x = this.x - (this.w>>1)
+          const y = this.y - (this.h>>1)
+          roundedRect(ctx, x, y, this.w, this.h, this.radius)
+        //   ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
           ctx.closePath();
           if (this.fill) {
             ctx.fillStyle = this.fill;
@@ -208,8 +237,8 @@ function listen_viewport() {
     requestAnimationFrame(init);
     function init() {
 
-        // dat.set('ball.rad', 25);
-        // dat.set('ball.fill', 'white');
+        // dat.set('pill.rad', 25);
+        // dat.set('pill.fill', 'white');
         canvas = document.createElement('canvas');
         ctx = canvas.getContext('2d');
         canvas.classList.add('blend_layer','layer');
@@ -230,6 +259,8 @@ function listen_viewport() {
         sys.set('mx', tgt_x)
         sys.set('my', tgt_y)
         sys.spring('rad',20,180)
+        sys.spring('h',20,90)
+        sys.spring('w',20,90)
         sys.spring('mx',20,80)
         sys.spring('my',20,80)
 
@@ -241,26 +272,43 @@ function listen_viewport() {
         // ctx.clearRect(0,0, vw, vh);
     }
     function draw() {
-        if (scroll_y > -100) {
+        if (mtgt_has) {
+            const w = mtgt_rect[2];
+            const h = mtgt_rect[3];
+            sys.set('w', w)
+            sys.set('h', h)
+            sys.set('mx', mtgt_rect[0] + (w>>1))
+            sys.set('my', mtgt_rect[1] + (h>>1))
+            sys.set('rad', Math.max(0, Math.min(pill.w,pill.h)>>1 ))
+        }
+        else if (scroll_y > -100) {
+            const r = vw/12
+            sys.set('w', r<<1)
+            sys.set('h', r<<1)
+            sys.set('rad', r)
             sys.set('mx', tgt_x)
             sys.set('my', tgt_y)
-            sys.set('rad', vw/12)
         }
         else {
+            const r = Math.abs(map_range(Math.abs(pill.x + pill.y - (mx + my)), 500,0, vw/36,vw/18))
+            sys.set('w', r<<1)
+            sys.set('h', r<<1)
+            sys.set('rad',r)
             sys.set('mx', mx)
             sys.set('my', my)
-            sys.set('rad',Math.abs(map_range(Math.abs(ball.x + ball.y - (mx + my)), 500,0, vw/36,vw/18)))
         }
 
         sys.update()
         clear();
-        ball.x = sys.get('mx');
-        ball.y = sys.get('my');
-        ball.radius = sys.get('rad');
+        pill.x = sys.get('mx');
+        pill.y = sys.get('my');
+        pill.radius = Math.max(sys.get('rad'),0);
+        pill.w = Math.max(sys.get('w'),0);
+        pill.h = Math.max(sys.get('h'),0);
 
-        // ball.stroke_w = vw >> 6;
+        // pill.stroke_w = vw >> 6;
 
-        ball.draw();
+        pill.draw();
         requestAnimationFrame(draw)
     }
 })();
