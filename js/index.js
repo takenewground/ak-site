@@ -214,7 +214,7 @@ function listen_viewport() {
         if (scroll_y > -100) {
             sys.set('mx', tgt_x)
             sys.set('my', tgt_y)
-            sys.set('rad', vw/18)
+            sys.set('rad', vw/12)
         }
         else {
             sys.set('mx', mx)
