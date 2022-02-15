@@ -1,0 +1,53 @@
+{
+    "name": "Adrian Koehler",
+    "short_name": "Adrian Koehler",
+    "description": "no bullshit COACH for the RELENTLESS",
+    "start_url": "/index.html",
+    "display_override": [""],
+    "display":      "standalone",
+    "orientation":  "landscape",
+    "theme_color": "hsl(0deg 0% 23%)",
+    "background_color": "hsl(0deg 0% 23%)",
+    "icons": [
+        {
+            "src": "icon/favicon32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon96.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon192.png",
+            "sizes": "168x168",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icon/appicon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

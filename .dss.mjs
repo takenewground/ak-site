@@ -77,7 +77,7 @@ dss.install(dss.plugin_from_obj({
         function app_css()
         {
             const $ = css.class;
-            return css.flatten([
+            return  css.flatten([
                 ['body',`
                     --color-text: #fff;
                     --color-bg: #1e2227;
@@ -104,7 +104,24 @@ dss.install(dss.plugin_from_obj({
 
                     -webkit-font-smoothing: antialiased;
                     -moz-osx-font-smoothing: grayscale;
-                `
+                `],
+                ['html.pleaserotate-showing',`overflow:hidden !important;`,
+
+                ],
+                ['#pleaserotate-message',$`text-center m.t(1em)`,`
+                font-family: Saol Display, ivypresto-display, serif;
+                font-weight: 500;
+                font-size: 12vw;
+                line-height: 1.1111111;
+                letter-spacing: -0.05ch;`,
+                    ['small', $`block m.y(3em)`, `
+                    font-weight: bold;
+                    font-size: 3vw;
+                    line-height: 2;
+                    letter-spacing: 2ch; marging-left: 2ch;
+                    text-transform: uppercase;
+                    font-family: 'Aktiv Grotesk';
+                    `]
                 ],
                 ['.layer',$`fixed t(0) l(0) `],
                 ['a',$`color(${css.v('color-link')}) cursor(pointer)

@@ -1254,6 +1254,50 @@ body {
                     -moz-osx-font-smoothing: grayscale;
 	
                 ;
+}html.pleaserotate-showing {
+	overflow:hidden !important;
+}
+
+#pleaserotate-message {
+	text-align: center;
+	margin-top:1em;
+}
+
+#pleaserotate-message {
+	
+                font-family: Saol Display, ivypresto-display, serif;
+	
+                font-weight: 500;
+	
+                font-size: 12vw;
+	
+                line-height: 1.1111111;
+	
+                letter-spacing: -0.05ch;
+}
+
+#pleaserotate-message small {
+	display:block;
+	margin-top:3em;
+	   margin-bottom:3em;
+}
+
+#pleaserotate-message small {
+	
+                    font-weight: bold;
+	
+                    font-size: 3vw;
+	
+                    line-height: 2;
+	
+                    letter-spacing: 2ch;
+	 marging-left: 2ch;
+	
+                    text-transform: uppercase;
+	
+                    font-family: 'Aktiv Grotesk';
+	
+                    ;
 }.layer {
 	position: fixed;
 	top:0;
@@ -1443,6 +1487,7 @@ section.intro > .title {
 	grid-column-end: 7;
 	grid-row-start: 2;
 	grid-row-end: auto;
+	margin-top:5.5555556vh;
 	display:flex;
 	 flex-direction:column;
 	gap:6vw;
