@@ -189,6 +189,7 @@ dss.install(dss.plugin_from_obj({
                         ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
                     ],
                     ['> .title', $`col.start(2) col.end(7) row.start(2) row.end(auto)
+                        m.t(${css.vh(100/18)})
                         flex-v gap(6vw) items-center
                         uppercase text-center`,`
                         text-transform: uppercase;
