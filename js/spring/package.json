@@ -1,0 +1,5 @@
+{
+    "name": "spring_phys",
+    "main": "index.js",
+    "type": "module"
+}
