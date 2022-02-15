@@ -1275,11 +1275,10 @@ a:hover {
 }
 
 p {
-	
-                    max-width:64ch;
-	
-                    ;
-}p.lead {
+	max-width:64ch;
+}
+
+p.lead {
 	
                         font-size: var(--rlh);
 	
@@ -1423,8 +1422,8 @@ section.intro {
 section.intro > .graphic {
 	grid-column-start: 6;
 	grid-column-end: 9;
-	grid-row-start: 2;
-	grid-row-end: 10;
+	grid-row-start: 1;
+	grid-row-end: 9;
 	margin-bottom:-11.1111111vh;
 	display:flex;
 	 flex-direction:row;
@@ -1442,11 +1441,11 @@ section.intro > .graphic .graphic-item {
 section.intro > .title {
 	grid-column-start: 2;
 	grid-column-end: 7;
-	grid-row-start: 3;
+	grid-row-start: 2;
 	grid-row-end: auto;
 	display:flex;
 	 flex-direction:column;
-	gap:5vw;
+	gap:6vw;
 	align-items: center;
 	text-transform: uppercase;
 	text-align: center;
@@ -1487,23 +1486,63 @@ section.intro > .social-links {
 	align-items: center;
 	text-align: center;
 	gap:1.6666666vw;
+	display:none;
+}
+
+section.outro {
+	position: relative;
+	height:100vh;
+	padding-top:0;
+	display:grid;
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+	grid-template-rows: repeat(9, minmax(0, 1fr));
+}
+
+section.outro > .graphic {
+	grid-column-start: 2;
+	grid-column-end: 5;
+	grid-row-start: 3;
+	grid-row-end: 10;
+	display:flex;
+	 flex-direction:row;
+	z-index:-1;
+}
+
+section.outro > .graphic .graphic-item {
+	width:100%;
+	display:block;
+	border-top-left-radius:999px;
+	 border-top-right-radius:999px;
+	background-size:cover;
+	background-position:50% 0%;
+}
+
+section.outro > .text {
+	grid-column-start: 6;
+	grid-column-end: 8;
+	grid-row-start: 8;
+	grid-row-end: auto;
+	display:flex;
+	 flex-direction:column;
+	gap:5vw;
+	align-items: center;
 }
 
 section.graphic-text {
 	position: relative;
 	height:100vh;
-	padding-top:5.5555556vh;
-	   padding-bottom:5.5555556vh;
+	padding-top:0vh;
+	   padding-bottom:0vh;
 	display:grid;
 	grid-template-columns: repeat(9, minmax(0, 1fr));
 	grid-template-rows: repeat(9, minmax(0, 1fr));
 }
 
 section.graphic-text > .graphic {
-	grid-column-start: 2;
+	grid-column-start: 3;
 	grid-column-end: 5;
-	grid-row-start: 2;
-	grid-row-end: 8;
+	grid-row-start: 1;
+	grid-row-end: 6;
 	margin-bottom:-11.1111111vh;
 	display:flex;
 	 flex-direction:row;
@@ -1519,83 +1558,12 @@ section.graphic-text > .graphic .graphic-item {
 
 section.graphic-text > .text {
 	grid-column-start: 6;
-	grid-column-end: 9;
-	grid-row-start: 3;
+	grid-column-end: 8;
+	grid-row-start: 6;
 	grid-row-end: auto;
 }
 
-section.intro_old {
-	position: relative;
-	display:flex;
-	 flex-direction:column;
-	gap:5vh;
-	min-height:100vh;
-	padding-top:5.5555556vh;
-	   padding-bottom:5.5555556vh;
-}
-
-section.intro_old .gallery {
-	flex-grow: 1;
-	display:grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap:11.11111vw;
-}
-
-section.intro_old .gallery .gallery-item {
-	width:100%;
-	display:block;
-	border-radius:999px;
-	background-size:cover;
-	background-position:50% 50%;
-}
-
-section.intro_old .title {
-	display:flex;
-	 flex-direction:column;
-}
-
-section.intro_old .title {
-	
-                        gap: 3.75vw;
-	
-                        text-transform: uppercase;
-	
-                        text-align:center;
-	
-                        ;
-}section.intro_old .title .title-main {
-	margin:0;
-	font-size:13vw;
-	font-family:Saol Display, ivypresto-display, serif;
-	font-weight:500;
-	font-size:5.938vw;
-	line-height:5.619vw;
-	letter-spacing:-0.231vw;
-	pointer-events:none;
-}
-
-section.intro_old .title .title-links {
-	
-                            margin-left: 0.25rem;
-	
-                            display: flex;
-	
-                            flex-wrap: wrap;
-	
-                            font-weight: bold;
-	
-                            font-size: 0.688vw;
-	
-                            line-height: 0.688vw;
-	
-                            letter-spacing: 0.188vw;
-	
-                            text-transform: uppercase;
-	
-                            font-family: 'Aktiv Grotesk';
-	
-                        ;
-}section.present {
+section.present {
 	position: relative;
 	display:flex;
 	 flex-direction:column;
@@ -1623,7 +1591,7 @@ section.clients {
 	
                         padding-bottom: 33.333333vh;
 	
-                        gap: 5vw;
+                        gap: 7vw;
 	
                         text-align:center;
 	
@@ -1632,18 +1600,23 @@ section.clients {
 	
                         font-weight: 500;
 	
-                        font-size: 5.313vw;
-	
                         font-family: 'Saol Display';
 	
-                        line-height: 5.875vw;
+                        font-size: 5vw;
 	
-                        letter-spacing: -0.206vw;
+                        line-height: 5.55555vw;
+	
+                        min-height: 8vw;
+	
+                        letter-spacing: -0.04ch;
 	
                     ;
 }section.clients li a {
 	position: relative;
 	z-index:10;
+}
+
+section.clients li a:not([href]) {
 	text-decoration-line: none;
 }
 

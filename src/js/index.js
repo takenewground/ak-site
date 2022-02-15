@@ -44,51 +44,6 @@ function lerp(start, end, amt) {
     return (1 - amt) * start + amt * end;
 }
 
-const section_style = document.createElement('style');
-document.body.appendChild(section_style)
-const section_intro = document.querySelector('section.intro');
-
-import {map_range} from "./spring/index.js"
-import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
-
-// let scroll_y = 0;
-
-const scrollrig = new ScrollRig();
-scrollrig.jack('main', document.querySelector('main'), {
-    dir:SCROLL_DIR_Y,
-    onrender($) {
-        const scroll_y = $.dim_y[0];
-        let styles = `
-            #intro>.graphic {transform:translate3d(0,${map_range(scroll_y, 0,vh, 0,-vh/6)}px,0);}
-        `;
-        section_style.innerHTML = styles;
-        // console.log($.dim_y[0]);
-    }
-})
-
-
-
-
-
-let mx = 0|0;
-let my = 0|0;
-function listen_mouse() {
-    document.addEventListener('mousemove',function(e){
-        mx = e.clientX;
-        my = e.clientY;
-    },{passive:true});
-}
-let vw = 0|0;
-let vh = 0|0;
-function listen_viewport() {
-    measure_viewport();
-    window.addEventListener("resize",measure_viewport,{passive:true});
-    function measure_viewport() {
-        vw = window.innerWidth;
-        vh = window.innerHeight;
-    }
-}
-
 
 
 function threshold_steps(n) {
@@ -122,6 +77,165 @@ let sections = document.querySelectorAll('main>section');
 //     break
 // }
 
+class Section {
+
+}
+class SectionRig {
+    constructor() {
+        this.sections = [];
+    }
+
+}
+
+const section_style = document.createElement('style');
+document.body.appendChild(section_style)
+
+const section_intro = document.querySelector('section.intro');
+
+import {map_range, spring_system_create} from "./spring/index.js"
+import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
+
+let scroll_y = 0;
+
+const scrollrig = new ScrollRig();
+scrollrig.jack('main', document.querySelector('main'), {
+    dir:SCROLL_DIR_Y,
+    onrender($) {
+        scroll_y = $.dim_y[0];
+        let styles = `
+            #s1>.graphic {transform:translate3d(0,${map_range(scroll_y, 0,vh, 0,-vh/4)}px,0);}
+            #s2>.graphic {transform:translate3d(0,${map_range(scroll_y, vh,vh<<1, 0,-vh/6)}px,0);}
+        `;
+        section_style.innerHTML = styles;
+        // console.log($.dim_y[0]);
+    }
+})
+
+// sections.add(document.querySelector('section.intro'),
+//     function () {
+
+//     },
+//     function () {
+
+//     }
+// )
+
+let mx = 0|0;
+let my = 0|0;
+function listen_mouse() {
+    document.addEventListener('mousemove',function(e){
+        mx = e.clientX;
+        my = e.clientY;
+    },{passive:true});
+}
+let vw = 0|0;
+let vh = 0|0;
+function listen_viewport() {
+    measure_viewport();
+    window.addEventListener("resize",measure_viewport,{passive:true});
+    function measure_viewport() {
+        vw = window.innerWidth;
+        vh = window.innerHeight;
+    }
+}
+
+
+
+(function(){
+    let canvas;
+    let ctx
+    let dat = new Map();
+    let clear_color = 'rgba(0, 0, 0, 0.4)';
+    var ball = {
+        x: 100,
+        y: 100,
+        vx: 5,
+        vy: 1,
+        radius: 500,
+        stroke: '',
+        stroke_w: 20,
+        fill: 'white',//'black',
+        draw: function() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+          ctx.closePath();
+          if (this.fill) {
+            ctx.fillStyle = this.fill;
+            ctx.fill();
+          }
+          if (this.stroke) {
+            ctx.lineWidth = this.stroke_w;
+            ctx.strokeStyle = this.stroke;
+            ctx.stroke()
+          }
+        }
+    };
+
+    const _2PI = Math.PI * 2;
+    let sys
+    let tgt_x
+    let tgt_y
+    requestAnimationFrame(init);
+    function init() {
+
+        // dat.set('ball.rad', 25);
+        // dat.set('ball.fill', 'white');
+        canvas = document.createElement('canvas');
+        ctx = canvas.getContext('2d');
+        canvas.classList.add('blend_layer','layer');
+        canvas.style.zIndex = -1
+        canvas.width = vw;
+        canvas.height = vh;
+        document.querySelector('.bg').appendChild(canvas)
+
+        let tgt_rect = document.querySelector('.logo').getBoundingClientRect();
+        tgt_x = tgt_rect.left + (tgt_rect.width>>1);
+        tgt_y = tgt_rect.top + (tgt_rect.height>>1);
+
+        sys = spring_system_create("bg_canvas", function () {
+
+        }, function() {
+
+        })
+        sys.set('mx', tgt_x)
+        sys.set('my', tgt_y)
+        sys.spring('rad',20,180)
+        sys.spring('mx',20,80)
+        sys.spring('my',20,80)
+
+        draw();
+    }
+    function clear() {
+        ctx.fillStyle = clear_color
+        ctx.fillRect(0,0,vw,vh);
+        // ctx.clearRect(0,0, vw, vh);
+    }
+    function draw() {
+        if (scroll_y > -100) {
+            sys.set('mx', tgt_x)
+            sys.set('my', tgt_y)
+            sys.set('rad', vw/18)
+        }
+        else {
+            sys.set('mx', mx)
+            sys.set('my', my)
+            sys.set('rad',Math.abs(map_range(Math.abs(ball.x + ball.y - (mx + my)), 500,0, vw/36,vw/18)))
+        }
+
+        sys.update()
+        clear();
+        ball.x = sys.get('mx');
+        ball.y = sys.get('my');
+        ball.radius = sys.get('rad');
+
+        // ball.stroke_w = vw >> 6;
+
+        ball.draw();
+        requestAnimationFrame(draw)
+    }
+})();
+
+
 (function(){
     let canvas;
     let ctx
@@ -154,6 +268,7 @@ let sections = document.querySelectorAll('main>section');
     var circle_striped = {
         x: 100,
         y: 100,
+        line_gap: 10,
         vx: 5,
         vy: 1,
         radius: 500,
@@ -178,13 +293,13 @@ let sections = document.querySelectorAll('main>section');
                 ctx.translate(this.x + this.radius, this.y - this.radius);
                 ctx.beginPath();
                 const diam = this.radius<<1;
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-5/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-6/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-5/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-4/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-3/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-4/9, 0);
-                ctx.translate(0, this.radius*1/9); ctx.moveTo(0,0); ctx.lineTo(diam*-5/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-4/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-5/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-3/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-4/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-3/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-4/9, 0);
+                ctx.translate(0, this.line_gap); ctx.moveTo(0,0); ctx.lineTo(diam*-5/9, 0);
                 ctx.lineWidth = this.stroke_w;
                 ctx.strokeStyle = this.stroke;
                 ctx.stroke()
@@ -216,21 +331,24 @@ let sections = document.querySelectorAll('main>section');
     }
     function draw() {
         clear();
-        ball.x = vw * 8/9 ;
-        ball.y = vh / 9 ;
         ball.radius = vw / 3;
         ball.stroke_w = vw >> 6;
+        ball.x = map_range(scroll_y, 0,vh<<2,  vw * 8/9,ball.radius + ball.stroke_w);
+        ball.y = vh / 9 ;
         ball.draw();
-        circle_striped.x = vw*2/9;
-        circle_striped.y = vw*8/9;
-        circle_striped.stroke_w = vw >> 10;
-        circle_striped.radius = vw*3/18;
+        circle_striped.line_gap = vw/100 * .7;
+        circle_striped.stroke_w = 1;
+        circle_striped.radius = vw*2/18;
+        circle_striped.x = map_range(scroll_y, 0,-(vh<<2),
+                vw*2/9, -1*(circle_striped.radius + circle_striped.stroke_w));
+
+        circle_striped.y = vh*8/9 + circle_striped.radius + (circle_striped.line_gap<<1);
+        // circle_striped.y = map_range(scroll_y, 0,-vh,
+        //     vh*8/9 + circle_striped.radius,  0);
 
         circle_striped.draw()
-        // requestAnimationFrame(draw)
+        requestAnimationFrame(draw)
     }
-
-
 })();
 
 function start_tick() {

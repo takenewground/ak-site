@@ -35,7 +35,7 @@ export class ScrollJack {
         if (dir & SCROLL_DIR_Y) {
             const dim = this.dim_y = new DIM_ARRAY_T(DIM_LENGTH);
             this.update_y = function(delta) {$._update_dim(dim, delta);}
-            this.resize_y = function(size) {$._resize_dim(dim, size);}
+            this.resize_y = function(content_size, visible_size) {$._resize_dim(dim, content_size, visible_size);}
         }
         else {
             this.dim_y = EMPTY_DIM;
@@ -46,7 +46,7 @@ export class ScrollJack {
         if (dir & SCROLL_DIR_X) {
             const dim = this.dim_x = new DIM_ARRAY_T(DIM_LENGTH);
             this.update_x = function(delta) {$._update_dim(dim, delta);}
-            this.resize_x = function(size) {$._resize_dim(dim, size);}
+            this.resize_x = function(content_size, visible_size) {$._resize_dim(dim, content_size, visible_size);}
         }
         else {
             this.dim_x = EMPTY_DIM;
@@ -144,8 +144,8 @@ export class ScrollJack {
 
     // TODO: min/max padding?
 
-    _resize_dim(dim, size) {
-        let new_min = -size;
+    _resize_dim(dim, content_size, visible_size) {
+        let new_min = -(content_size - visible_size);
         dim[DIM_MIN] = new_min;
 
         // TODO: update dim val to kill jank
@@ -159,8 +159,8 @@ export class ScrollJack {
     }
     measure() {
         const rect = this.el.getBoundingClientRect();
-        this.resize_x(rect.width)
-        this.resize_y(rect.height)
+        this.resize_x(rect.width, window.innerWidth)
+        this.resize_y(rect.height,window.innerHeight)
         this.commit_if_needed();
     }
     commit_if_needed() {

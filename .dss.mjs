@@ -112,9 +112,7 @@ dss.install(dss.plugin_from_obj({
                 `,
                     ['&:hover',$`textline-solid`],
                 ],
-                ['p',`
-                    max-width:64ch;
-                    `,
+                ['p',$`w.max(64ch)`,
                     ['&.lead', `
                         font-size: var(--rlh);
                         -webkit-hyphens: auto;
@@ -186,12 +184,12 @@ dss.install(dss.plugin_from_obj({
                     $`relative h(100vh) p.y(${css.vh(100/18)})
                         grid grid.cols(9) grid.rows(9)
                     `,
-                    ['> .graphic', $`col.start(6) col.end(9) row.start(2) row.end(10) m.b(${css.vh(-100/9)})
+                    ['> .graphic', $`col.start(6) col.end(9) row.start(1) row.end(9) m.b(${css.vh(-100/9)})
                         flex-h zi(-1)`,
                         ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
                     ],
-                    ['> .title', $`col.start(2) col.end(7) row.start(3) row.end(auto)
-                        flex-v gap(5vw) items-center
+                    ['> .title', $`col.start(2) col.end(7) row.start(2) row.end(auto)
+                        flex-v gap(6vw) items-center
                         uppercase text-center`,`
                         text-transform: uppercase;
                         text-align:center;
@@ -210,56 +208,39 @@ dss.install(dss.plugin_from_obj({
                     ['> .social-links',
                         // $`col.start(3) col.end(6) row.start(8) row.end(auto) flex-v items-center text-center
                         $`col.start(8) col.end(10) row.start(1) row.end(auto) flex-v items-center text-center
-                            gap(1.6666666vw)`,
+                            gap(1.6666666vw)
+                            none`,
                         // $`col.start(3) col.end(6) row.start(9) row.end(auto) flex-h items-end content-between gap(2em) text-center`,
                         // ['>a',$`w.max(9em)`],
 
                     ],
                 ],
-                ['section.graphic-text',
-                    $`relative h(100vh) p.y(${css.vh(100/18)})
+                ['section.outro',
+                    $`relative h(100vh) p.t(0)
                         grid grid.cols(9) grid.rows(9)
                     `,
-                    ['> .graphic', $`col.start(2) col.end(5) row.start(2) row.end(8) m.b(${css.vh(-100/9)})
-                        flex-h`,
-                        ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
+                    ['> .graphic', $`col.start(2) col.end(5) row.start(3) row.end(10)
+                        flex-h zi(-1)`,
+                        ['.graphic-item', $`w(100%) block rounded.t(999px) bg.size(cover) bg.position(${'50% 0%'})`],
                     ],
-                    ['> .text', $`col.start(6) col.end(9) row.start(3) row.end(auto)`
+                    ['> .text', $`col.start(6) col.end(8) row.start(8) row.end(auto)
+                        flex-v gap(5vw) items-center`
                     ],
 
                 ],
-                ['section.intro_old',
-                    $`relative flex-v gap(5vh) h.min(100vh) p.y(${css.vh(100/18)})`,
-                    ['.gallery', $`flex-grow grid grid.cols(3) gap(11.11111vw)`,
-                        ['.gallery-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
+                ['section.graphic-text',
+                    $`relative h(100vh) p.y(${css.vh(0/9)})
+                        grid grid.cols(9) grid.rows(9)
+                    `,
+                    ['> .graphic', $`col.start(3) col.end(5) row.start(1) row.end(6) m.b(${css.vh(-100/9)})
+                        flex-h`,
+                        ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
                     ],
-                    ['.title', css.class`flex-v`,`
-                        gap: 3.75vw;
-                        text-transform: uppercase;
-                        text-align:center;
-                        `,
-                        ['.title-main',$`m(0) style(${`
-                            font-size: 13vw;
-                            font-family: Saol Display, ivypresto-display, serif;
-                            font-weight: 500;
-                            font-size: 5.938vw;
-                            line-height: 5.619vw;
-                            letter-spacing: -0.231vw;
-                            pointer-events: none;
-                        `})`],
-                        ['.title-links',`
-                            margin-left: 0.25rem;
-                            display: flex;
-                            flex-wrap: wrap;
-                            font-weight: bold;
-                            font-size: 0.688vw;
-                            line-height: 0.688vw;
-                            letter-spacing: 0.188vw;
-                            text-transform: uppercase;
-                            font-family: 'Aktiv Grotesk';
-                        `]
+                    ['> .text', $`col.start(6) col.end(8) row.start(6) row.end(auto)`
                     ],
+
                 ],
+
                 ['section.present', css.class`relative flex-v`, `
                         padding-top: 33.333333vh;
                         padding-bottom: 33.333333vh;
@@ -269,17 +250,18 @@ dss.install(dss.plugin_from_obj({
                 ['section.clients', css.class`relative flex-v items-center`, `
                         padding-top: 33.333333vh;
                         padding-bottom: 33.333333vh;
-                        gap: 5vw;
+                        gap: 7vw;
                         text-align:center;
                     `,
                     ['li',`
                         font-weight: 500;
-                        font-size: 5.313vw;
                         font-family: 'Saol Display';
-                        line-height: 5.875vw;
-                        letter-spacing: -0.206vw;
+                        font-size: 5vw;
+                        line-height: 5.55555vw;
+                        min-height: 8vw;
+                        letter-spacing: -0.04ch;
                     `,
-                        ['a',$`relative zi(10) textline-none`],
+                        ['a',$`relative zi(10)`,['&:not([href])',$`textline-none`]],
                         ['.gallery', css.class`absolute`,`
                             z-index:0;
                             visibility:hidden;
