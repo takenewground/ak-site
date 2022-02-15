@@ -9,6 +9,7 @@ import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
 
 
 const is_mobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent)
+let is_ready = false;
 
 if (is_mobile) {
     window.PleaseRotateOptions = {
@@ -30,7 +31,11 @@ if (is_mobile) {
 else
     on_ready()
 
+
 function on_ready() {
+    if (is_ready)
+        return
+    is_ready = true;
     // console.log("on_ready")
 // const _canihaz = new Map();
 // function canihaz(key) { return _canihaz.get(key)}
