@@ -159,6 +159,7 @@ let mx = 0|0;
 let my = 0|0;
 const mtgt_rect = new Uint32Array(4);
 let mtgt_has = false;
+let mtgt_scroll_y = 0;
 function listen_mouse() {
     document.addEventListener('mousemove',function(e){
         mx = e.clientX;
@@ -167,6 +168,7 @@ function listen_mouse() {
         if (tag === 'a') {
             const pad = vw >> 5;
             mtgt_has = true;
+            mtgt_scroll_y = scroll_y;
             let {x,y,width,height} = e.target.getBoundingClientRect()
             mtgt_rect[0] = x - pad;
             mtgt_rect[1] = y - pad;
@@ -286,7 +288,7 @@ function roundedRect(ctx, x, y, width, height, radius) {
             sys.set('w', w)
             sys.set('h', h)
             sys.set('mx', mtgt_rect[0] + (w>>1))
-            sys.set('my', mtgt_rect[1] + (h>>1))
+            sys.set('my', mtgt_rect[1] + (h>>1) - (mtgt_scroll_y - scroll_y))
             sys.set('rad', Math.max(0, Math.min(pill.w,pill.h)>>1 ))
         }
         else if (scroll_y > -100) {
