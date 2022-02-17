@@ -1,0 +1,62 @@
+/* TODO: add rest?  */
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-Thin.woff") format("woff");
+    font-weight: 100; font-style: normal;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-ThinItalic.woff") format("woff");
+    font-weight: 100; font-style: italic;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-Light.woff") format("woff");
+    font-weight: 300; font-style: normal;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-LightItalic.woff") format("woff");
+    font-weight: 300; font-style: italic;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-Book.woff") format("woff");
+    font-weight: 400; font-style: normal;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-BookItalic.woff") format("woff");
+    font-weight: 400; font-style: italic;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-Regular.woff") format("woff");
+    font-weight: 500; font-style: normal;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-RegularItalic.woff") format("woff");
+    font-weight: 500; font-style: italic;
+}
+
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-Bold.woff") format("woff");
+    font-weight: 700; font-style: normal;
+}
+@font-face {
+	font-family: "Nexa Text";
+	src:   /**/
+       url("./web/NexaText-BoldItalic.woff") format("woff");
+    font-weight: 700; font-style: italic;
+}

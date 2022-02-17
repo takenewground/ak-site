@@ -16,22 +16,12 @@
         },
         {
             "src": "icon/appicon96.png",
-            "sizes": "64x64",
-            "type": "image/png"
-        },
-        {
-            "src": "icon/appicon96.png",
             "sizes": "96x96",
             "type": "image/png"
         },
         {
             "src": "icon/appicon128.png",
             "sizes": "128x128",
-            "type": "image/png"
-        },
-        {
-            "src": "icon/appicon192.png",
-            "sizes": "168x168",
             "type": "image/png"
         },
         {

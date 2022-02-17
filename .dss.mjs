@@ -72,7 +72,7 @@ dss.install(dss.plugin_from_obj({
         // console.log(css.mixin('flex-v', ['gap',css.rlh(1)] ))
         writeFile("./src/css/base.css", css.beautify(out))
         // console.log(css.beautify(out));
-        console.log(css.class`relative grid`)
+
 
         function app_css()
         {
@@ -89,22 +89,30 @@ dss.install(dss.plugin_from_obj({
                     --color-link: #fff;
                     --color-link-hover: #fff;
 
-                    --page-padding: 2vw;
                     color: var(--color-text);
                     background-color: var(--color-bg);
-                    font-family: 'Aktiv Grotesk', Nexa Text, brother-1816, sans-serif;
-                    --rfs: 0.938vw;
-                    --rlh: calc(var(--rfs) * 1.875 / 0.938);
-                    font-size: 1.0vw;
-                    font-weight: 400;
-                    line-height: calc(1.875 / 0.938);
-                    line-height: 1.6666666;
-                    letter-spacing: 0.034vw;
-                    font-family: 'Aktiv Grotesk';
 
+                    font-family: 'Aktiv Grotesk', Nexa Text, brother-1816, sans-serif;
                     -webkit-font-smoothing: antialiased;
                     -moz-osx-font-smoothing: grayscale;
-                `],
+                    font-size: 2.5vw;
+
+                `,
+                    `--text-scale: 1.0;`,
+                    [css.media('xl'), `--text-scale: 1.3333333;`],
+                    [css.media('lg'), `--text-scale: 1.6666666;`],
+                    [css.media('md'), `--text-scale: 2.0000000;`],
+                    [css.media('sm'), `--text-scale: 2.3333333;`],
+                    [css.media('xs'), `--text-scale: 2.6666666;`],
+                    `
+                    --rfs: 0.938vw;
+                    --rlh: calc(var(--rfs) * 1.875 / 0.938);
+                    font-weight: 400;
+                    font-size: calc(1.0vw * var(--text-scale));
+                    line-height: 1.6666666;
+                    letter-spacing: calc(0.034vw * var(--text-scale));
+                    `
+                ],
                 ['html.pleaserotate-showing',`overflow:hidden !important;`,
 
                 ],
@@ -130,15 +138,16 @@ dss.install(dss.plugin_from_obj({
                     ['&:hover',$`textline-solid`],
                 ],
                 ['p',$`w.max(64ch)`,
-                    ['&.lead', `
-                        font-size: var(--rlh);
+                    ['&.lead',
+                    // font-size: var(--rlh);
+                    `
                         -webkit-hyphens: auto;
 	                    hyphens: auto;
                     `],
                 ],
                 ['h3', $`relative`, `
                             font-weight: bold;
-                            font-size: 0.77777777vw;
+                            font-size: calc(0.77777777vw * var(--text-scale));
                             line-height: 1em;
                             letter-spacing: 1.5ch;
                             text-indent: 1.5ch;
@@ -201,8 +210,9 @@ dss.install(dss.plugin_from_obj({
                     $`relative h(100vh) p.y(${css.vh(100/18)})
                         grid grid.cols(9) grid.rows(9)
                     `,
-                    ['> .graphic', $`col.start(6) col.end(9) row.start(1) row.end(9) m.b(${css.vh(-100/9)})
-                        flex-h zi(-1)`,
+                    ['> .graphic',$`flex-h zi(-1)`,
+                                         $`col.start(6) col.end(9) row.start(1) row.end(9) m.b(${css.vh(-100/9)}) m.r(0)`,
+                        [css.media('md'),$`col.start(6) col.end(10) row.start(1) row.end(10) m.b(${css.vh(-100/9)}) m.r(${css.vw(-100/18)})`],
                         ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
                     ],
                     ['> .title', $`col.start(2) col.end(7) row.start(2) row.end(auto)
@@ -237,27 +247,57 @@ dss.install(dss.plugin_from_obj({
                     $`relative h(100vh) p.t(0)
                         grid grid.cols(9) grid.rows(9)
                     `,
-                    ['> .graphic', $`col.start(2) col.end(5) row.start(3) row.end(10)
+                    ['> .graphic',        $`col.start(2) col.end(5) row.start(3) row.end(10)
                         flex-h zi(-1)`,
+                        [css.media('md'), $`col.start(1) col.end(5) row.start(3) row.end(10) m.l(${css.vh(-100/18)})`],
                         ['.graphic-item', $`w(100%) block rounded.t(999px) bg.size(cover) bg.position(${'50% 0%'})`],
                     ],
-                    ['> .text', $`col.start(6) col.end(8) row.start(8) row.end(auto)
-                        flex-v gap(5vw) items-center`
+                    ['> .text',           $`col.start(6) col.end(8) row.start(4) row.end(auto)
+                        flex-v gap(5vw) items-center`,
+                        [css.media('md'), $`col.start(5) col.end(9) row.start(4) row.end(auto)`],
                     ],
-
                 ],
+
                 ['section.graphic-text',
-                    $`relative h(100vh) p.y(${css.vh(0/9)})
-                        grid grid.cols(9) grid.rows(9)
+                    $`relative h(100vh) p.y(${css.vh(0/9)}) grid grid.cols(9) grid.rows(9)
                     `,
-                    ['> .graphic', $`col.start(3) col.end(5) row.start(1) row.end(6) m.b(${css.vh(-100/9)})
+                    [css.media('lg'), $`h(111.11111vh) p.y(${css.vh(1/18)})`],
+                    ['> .graphic',        $`col.start(3) col.end(5) row.start(1) row.end(6) m.b(${css.vh(-100/9)})
                         flex-h`,
+                        [css.media('lg'), $`col.start(1) col.end(4) row.start(1) row.end(6) m.b(${css.vh(-100/9)}) m.l(${css.vh(-100/18)})`],
                         ['.graphic-item', $`w(100%) block rounded(999px) bg.size(cover) bg.position(${'50% 50%'})`],
                     ],
-                    ['> .text', $`col.start(6) col.end(8) row.start(6) row.end(auto)`
+                    ['> .text',           $`col.start(6) col.end(8) row.start(6) row.end(auto)`,
+                        [css.media('lg'), $`col.start(5) col.end(9) row.start(6) row.end(auto)`],
                     ],
 
                 ],
+                ['section.graphic-text-alt',
+                    $`relative h(100vh) p.y(${css.vh(0/9)})
+                        grid grid.cols(9) grid.rows(9)
+                `,
+                ['> .graphic',        $`col.start(1) col.end(6) row.start(1) row.end(7) m.b(${css.vh(-100/9)})
+                    flex-h`,
+                    [css.media('lg'), $`col.start(1) col.end(4) row.start(1) row.end(7) m.b(${css.vh(-100/9)}) m.l(${css.vh(-100/18)})`],
+                    ['.graphic-item', $`w(100%) block rounded.r(999px) bg.size(cover) bg.position(${'50% 50%'})`],
+                ],
+                ['> .text',           $`col.start(6) col.end(8) row.start(8) row.end(auto)`,
+                    [css.media('lg'), $`col.start(5) col.end(9) row.start(6) row.end(auto)`],
+                    $`relative`,
+                    ['&::after',`
+                        content: '';
+                        position: absolute;
+                        width: 88vw;
+                        height: 88vw;
+                        border: 1px solid #000;
+                        border-radius: 50%;
+                        left: 50%;
+                        top: calc(-50% - 44vw);
+                        margin-left: -44vw;
+                    `]
+                ],
+
+            ],
 
                 ['section.present', css.class`relative flex-v`, `
                         padding-top: 33.333333vh;
@@ -265,10 +305,10 @@ dss.install(dss.plugin_from_obj({
                         gap: 3.75vw;
                     `
                 ],
-                ['section.clients', css.class`relative flex-v items-center`, `
+                ['section.clients', css.class`relative flex-v items-center  space.y(8vw)`, //gap: 7vw;
+                    `
                         padding-top: 33.333333vh;
                         padding-bottom: 33.333333vh;
-                        gap: 7vw;
                         text-align:center;
                     `,
                     ['li',`
