@@ -257,7 +257,9 @@ dss.install(dss.plugin_from_obj({
                             letter-spacing: -0.231vw;
                             pointer-events: none;
                         `})`],
-                        ['>figcaption',$`col.start(7) col.end(9) flex-v p(1.11111111rem) m.t(${css.vh(100*2/9)})`,
+                        ['>figcaption',$`col.start(7) col.end(9) flex-v p(1.11111111rem) m.t(${css.vh(100*2/9)})
+                            text-center
+                        `,
                             ['.avatar', $`m.b(1.11111111rem) w(100%) block rounded.t(999px) `],
                             ['.author-meta', $`color(black) style(${`font-weight: 600;`})`],
                         ],
