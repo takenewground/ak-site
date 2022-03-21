@@ -38,7 +38,10 @@ self.addEventListener('install', (e) => {
 });
 
 // // Fetching content using Service Worker
-self.addEventListener('fetch', (e) => {
+self.addEventListener('fetch', on_fetch);
+self.removeEventListener('fetch', on_fetch);
+
+function on_fetch(e) {
     e.respondWith((async () => {
         const r = await caches.match(e.request);
         // console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
@@ -50,4 +53,4 @@ self.addEventListener('fetch', (e) => {
         // cache.put(e.request, response.clone());
         return response;
     })());
-});
+}

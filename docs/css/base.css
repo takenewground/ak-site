@@ -1426,19 +1426,19 @@ h3 {
                             transform-origin: 100% 100%;
 	
                         ;
-}[data-scroll-container] {
+}[data-scroll-container].is-scrolling {
 	will-change:transform;
 }
 
-[data-scroll-container] [data-scroll-section] {
+[data-scroll-container].is-scrolling [data-scroll-section] {
 	will-change:transform;
 }
 
-[data-scroll-container] [data-scroll] {
+[data-scroll-container].is-scrolling [data-scroll] {
 	will-change:transform;
 }
 
-[data-scroll-container] .c-scrollbar_thumb {
+[data-scroll-container].is-scrolling .c-scrollbar_thumb {
 	will-change:transform;
 }
 
@@ -1571,6 +1571,56 @@ section.intro > .social-links {
 	text-align: center;
 	gap:1.6666666vw;
 	display:none;
+}
+
+section.quote {
+	position: relative;
+	margin-top:11.1111111vw;
+	   margin-bottom:11.1111111vw;
+	width:100vw;
+	display:grid;
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+section.quote >.figure-blockquote {
+	grid-column-start: 1;
+	grid-column-end: 10;
+	display:grid;
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+section.quote >.figure-blockquote >blockquote {
+	grid-column-start: 2;
+	grid-column-end: 7;
+	font-size:13vw;
+	font-family:Saol Display, ivypresto-display, serif;
+	font-weight:500;
+	font-size:6vw;
+	line-height:1.1111111;
+	letter-spacing:-0.231vw;
+	pointer-events:none;
+}
+
+section.quote >.figure-blockquote >figcaption {
+	grid-column-start: 7;
+	grid-column-end: 9;
+	display:flex;
+	 flex-direction:column;
+	padding:1.11111111rem;
+	margin-top:22.2222222vh;
+}
+
+section.quote >.figure-blockquote >figcaption .avatar {
+	margin-bottom:1.11111111rem;
+	width:100%;
+	display:block;
+	border-top-left-radius:999px;
+	 border-top-right-radius:999px;
+}
+
+section.quote >.figure-blockquote >figcaption .author-meta {
+	color:black;
+	font-weight:600;
 }
 
 section.outro {

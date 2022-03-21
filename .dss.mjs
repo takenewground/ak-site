@@ -243,6 +243,27 @@ dss.install(dss.plugin_from_obj({
 
                     ],
                 ],
+                ['section.quote',
+                    $`relative  m.y(${css.vw(100/9)}) w(100vw)
+                        grid grid.cols(9)
+                    `,
+                    ['>.figure-blockquote',$`col.start(1) col.end(10)  grid grid.cols(9)`,
+                        ['>blockquote',$`col.start(2) col.end(7) style(${`
+                            font-size: 13vw;
+                            font-family: Saol Display, ivypresto-display, serif;
+                            font-weight: 500;
+                            font-size: 6vw;
+                            line-height: 1.1111111;
+                            letter-spacing: -0.231vw;
+                            pointer-events: none;
+                        `})`],
+                        ['>figcaption',$`col.start(7) col.end(9) flex-v p(1.11111111rem) m.t(${css.vh(100*2/9)})`,
+                            ['.avatar', $`m.b(1.11111111rem) w(100%) block rounded.t(999px) `],
+                            ['.author-meta', $`color(black) style(${`font-weight: 600;`})`],
+                        ],
+
+                    ],
+                ],
                 ['section.outro',
                     $`relative h(100vh) p.t(0)
                         grid grid.cols(9) grid.rows(9)

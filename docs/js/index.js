@@ -1,8 +1,23 @@
 
-// Registering Service Worker
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
 }
+
+
+// import "./rig.js"
+// import "./rig/mouse.js"
+// (async function() {
+//     const MAIN = rig.man.id;
+//     const DRAW = rig.hash32_str("offscreen", 0);
+//     await rig.actor_spawn(MAIN, DRAW, rig.CANVAS_WORKER_T, function(){});
+//     // mouse
+//     const MOUSE_MAIN = rig.hash32_str("mouse_main", 0);
+//     const MOUSE_DRAW = rig.hash32_str("mouse_draw", 0);
+//     rig.actor_spawn(MAIN, MOUSE_MAIN, 0, rig.import_fn('mouse_producer'));
+//     rig.actor_spawn(DRAW, MOUSE_DRAW, 0, rig.import_fn('mouse_consumer'));
+// })();
+
 
 import {map_range, spring_system_create} from "./spring/index.js"
 import {ScrollRig, SCROLL_DIR_Y} from "./scroll/rig.js";
@@ -162,19 +177,20 @@ let mtgt_has = false;
 let mtgt_is_graphic = false;
 let mtgt_scroll_y = 0;
 function listen_mouse() {
+    const listen_opts = {passive:true};
     document.addEventListener('mousemove',function(e){
         handle_move(e.clientX,e.clientY,e.target);
-    },{passive:true});
+    }, listen_opts);
     const HAS_TOUCH = ('ontouchstart' in document);
     if (HAS_TOUCH) {
         document.addEventListener('touchmove', function (e) {
             const t = e.targetTouches ? e.targetTouches[0] : e
             handle_move(t.clientX,t.clientY,t.target);
-        })
+        }, listen_opts)
         document.addEventListener('touchstart', function (e) {
             const t = e.targetTouches ? e.targetTouches[0] : e
             handle_move(t.clientX,t.clientY,t.target);
-        })
+        }, listen_opts)
     }
     function handle_move(clientX, clientY, target) {
         mx = clientX;
