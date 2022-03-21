@@ -35,257 +35,6 @@ a  {
 	text-decoration: none;
 }
 
-.font-thin {
-	font-weight: 100;
-}
-
-.font-extralight {
-	font-weight: 200;
-}
-
-.font-light {
-	font-weight: 300;
-}
-
-.font-normal {
-	font-weight: 400;
-}
-
-.font-medium {
-	font-weight: 500;
-}
-
-.font-semibold {
-	font-weight: 600;
-}
-
-.font-bold {
-	font-weight: 700;
-}
-
-.font-extrabold {
-	font-weight: 800;
-}
-
-.font-black {
-	font-weight: 900;
-}
-
-.kern-tighter {
-	letter-spacing: -0.05em;
-}
-
-.kern-tight {
-	letter-spacing: -0.025em;
-}
-
-.kern-normal {
-	letter-spacing: 0em;
-}
-
-.kern-wide {
-	letter-spacing: 0.025em;
-}
-
-.kern-wider {
-	letter-spacing: 0.05em;
-}
-
-.kern-widest {
-	letter-spacing: 0.1em;
-}
-
-.text-xs {
-	font-size: 0.75rem;
-	 line-height: 1rem;
-}
-
-.text-sm {
-	font-size: 0.875rem;
-	 line-height: 1.25rem;
-}
-
-.text-base {
-	font-size: 1rem;
-	 line-height: 1.5rem;
-}
-
-.text-lg {
-	font-size: 1.125rem;
-	 line-height: 1.75rem;
-}
-
-.text-xl {
-	font-size: 1.25rem;
-	 line-height: 1.75rem;
-}
-
-.text-2xl {
-	font-size: 1.5rem;
-	 line-height: 2rem;
-}
-
-.text-3xl {
-	font-size: 1.875rem;
-	 line-height: 2.25rem;
-}
-
-.text-4xl {
-	font-size: 2.25rem;
-	 line-height: 2.5rem;
-}
-
-.text-5xl {
-	font-size: 3rem;
-	 line-height: 1;
-}
-
-.text-6xl {
-	font-size: 3.75rem;
-	 line-height: 1;
-}
-
-.text-7xl {
-	font-size: 4.5rem;
-	 line-height: 1;
-}
-
-.text-8xl {
-	font-size: 6rem;
-	 line-height: 1;
-}
-
-.text-9xl {
-	font-size: 8rem;
-	 line-height: 1;
-}
-
-.italic {
-	font-style: italic;
-}
-
-.not_italic {
-	font-style: normal;
-}
-
-.uppercase {
-	text-transform: uppercase;
-}
-
-.lowercase {
-	text-transform: lowercase;
-}
-
-.capitalize {
-	text-transform: capitalize;
-}
-
-.normalcase {
-	text-transform: none;
-}
-
-.text-left {
-	text-align: left;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.text-right {
-	text-align: right;
-}
-
-.text-justify {
-	text-align: justify;
-}
-
-.truncate {
-	overflow: hidden;
-	 text-overflow: ellipsis;
-	 white-space: nowrap;
-}
-
-.text-ellipsis {
-	text-overflow: ellipsis;
-}
-
-.text-clip {
-	text-overflow: clip;
-}
-
-.numeric-normal {
-	font-variant-numeric: normal;
-}
-
-.numeric-ordinal {
-	font-variant-numeric: ordinal;
-}
-
-.numeric-slashed_zero {
-	font-variant-numeric: slashed-zero;
-}
-
-.numeric-lining {
-	font-variant-numeric: lining-nums;
-}
-
-.numeric-oldstyle {
-	font-variant-numeric: oldstyle-nums;
-}
-
-.numeric-proportional {
-	font-variant-numeric: proportional-nums;
-}
-
-.numeric-tabular {
-	font-variant-numeric: tabular-nums;
-}
-
-.numeric-diagonal_fractions {
-	font-variant-numeric: diagonal-fractions;
-}
-
-.numeric-stacked_fractions {
-	font-variant-numeric: stacked-fractions;
-}
-
-.textline-none {
-	text-decoration-line: none;
-}
-
-.textline-under {
-	text-decoration-line: underline;
-}
-
-.textline-over {
-	text-decoration-line: overline;
-}
-
-.textline-through {
-	text-decoration-line: line-through;
-}
-
-.textline-solid {
-	text-decoration-style: solid;
-}
-
-.textline-double {
-	text-decoration-style: double;
-}
-
-.textline-dotted {
-	text-decoration-style: dotted;
-}
-
-.textline-dashed {
-	text-decoration-style: dashed;
-}
-
-.textline-wavy {
-	text-decoration-style: wavy;
-}
-
 .backface-hidden {
 	backface-visibility:hidden;
 }
@@ -1204,6 +953,257 @@ a  {
 	overflow-y: scroll;
 }
 
+.font-thin {
+	font-weight: 100;
+}
+
+.font-extralight {
+	font-weight: 200;
+}
+
+.font-light {
+	font-weight: 300;
+}
+
+.font-normal {
+	font-weight: 400;
+}
+
+.font-medium {
+	font-weight: 500;
+}
+
+.font-semibold {
+	font-weight: 600;
+}
+
+.font-bold {
+	font-weight: 700;
+}
+
+.font-extrabold {
+	font-weight: 800;
+}
+
+.font-black {
+	font-weight: 900;
+}
+
+.kern-tighter {
+	letter-spacing: -0.05em;
+}
+
+.kern-tight {
+	letter-spacing: -0.025em;
+}
+
+.kern-normal {
+	letter-spacing: 0em;
+}
+
+.kern-wide {
+	letter-spacing: 0.025em;
+}
+
+.kern-wider {
+	letter-spacing: 0.05em;
+}
+
+.kern-widest {
+	letter-spacing: 0.1em;
+}
+
+.text-xs {
+	font-size: 0.75rem;
+	 line-height: 1rem;
+}
+
+.text-sm {
+	font-size: 0.875rem;
+	 line-height: 1.25rem;
+}
+
+.text-base {
+	font-size: 1rem;
+	 line-height: 1.5rem;
+}
+
+.text-lg {
+	font-size: 1.125rem;
+	 line-height: 1.75rem;
+}
+
+.text-xl {
+	font-size: 1.25rem;
+	 line-height: 1.75rem;
+}
+
+.text-2xl {
+	font-size: 1.5rem;
+	 line-height: 2rem;
+}
+
+.text-3xl {
+	font-size: 1.875rem;
+	 line-height: 2.25rem;
+}
+
+.text-4xl {
+	font-size: 2.25rem;
+	 line-height: 2.5rem;
+}
+
+.text-5xl {
+	font-size: 3rem;
+	 line-height: 1;
+}
+
+.text-6xl {
+	font-size: 3.75rem;
+	 line-height: 1;
+}
+
+.text-7xl {
+	font-size: 4.5rem;
+	 line-height: 1;
+}
+
+.text-8xl {
+	font-size: 6rem;
+	 line-height: 1;
+}
+
+.text-9xl {
+	font-size: 8rem;
+	 line-height: 1;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.not_italic {
+	font-style: normal;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.normalcase {
+	text-transform: none;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.truncate {
+	overflow: hidden;
+	 text-overflow: ellipsis;
+	 white-space: nowrap;
+}
+
+.text-ellipsis {
+	text-overflow: ellipsis;
+}
+
+.text-clip {
+	text-overflow: clip;
+}
+
+.numeric-normal {
+	font-variant-numeric: normal;
+}
+
+.numeric-ordinal {
+	font-variant-numeric: ordinal;
+}
+
+.numeric-slashed_zero {
+	font-variant-numeric: slashed-zero;
+}
+
+.numeric-lining {
+	font-variant-numeric: lining-nums;
+}
+
+.numeric-oldstyle {
+	font-variant-numeric: oldstyle-nums;
+}
+
+.numeric-proportional {
+	font-variant-numeric: proportional-nums;
+}
+
+.numeric-tabular {
+	font-variant-numeric: tabular-nums;
+}
+
+.numeric-diagonal_fractions {
+	font-variant-numeric: diagonal-fractions;
+}
+
+.numeric-stacked_fractions {
+	font-variant-numeric: stacked-fractions;
+}
+
+.textline-none {
+	text-decoration-line: none;
+}
+
+.textline-under {
+	text-decoration-line: underline;
+}
+
+.textline-over {
+	text-decoration-line: overline;
+}
+
+.textline-through {
+	text-decoration-line: line-through;
+}
+
+.textline-solid {
+	text-decoration-style: solid;
+}
+
+.textline-double {
+	text-decoration-style: double;
+}
+
+.textline-dotted {
+	text-decoration-style: dotted;
+}
+
+.textline-dashed {
+	text-decoration-style: dashed;
+}
+
+.textline-wavy {
+	text-decoration-style: wavy;
+}
+
 body {
 	
                     --color-text: #fff;
@@ -1608,6 +1608,7 @@ section.quote >.figure-blockquote >figcaption {
 	 flex-direction:column;
 	padding:1.11111111rem;
 	margin-top:22.2222222vh;
+	text-align: center;
 }
 
 section.quote >.figure-blockquote >figcaption .avatar {
