@@ -5,7 +5,10 @@
   "description": "",
   "scripts": {
     "start": "serve",
-    "clean": "rm -rf dist/*"
+    "build": "node ./.dss.mjs",
+    "dist": "rm -rf docs/* && gcp -rlf src/* docs/",
+    "clean": "rm -rf docs/*",
+    "brew": "brew install coreutils serve"
   },
   "repository": {
     "type": "git",
